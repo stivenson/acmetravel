@@ -1,7 +1,8 @@
 .login {
-  margin: 0;
-  padding: 0;
+
   text-align: center;
+  max-width: 300px;
+  margin: 0 auto; 
 
   & h1 {
     font-size: 24px;
@@ -35,8 +36,6 @@
   & .form-container {
     width: 100%;
     max-width: 30rem;
-    display: inline-block;
-    text-align: left;
   }
 
   & label {
@@ -55,7 +54,6 @@
   & .pt-callout {
     background: #f9e1e1;
     max-width: 380px;
-    display: inline-block;
     margin-bottom: 15px;
   }
 }

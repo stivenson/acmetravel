@@ -9,29 +9,35 @@ const Login = {
             email: m.prop(""),
             password: m.prop("")
         };
+
+        this.login = () => {m.route('/dashboard')}
     },
     view(c) {
         return (
-            <div class="login">
-                <br />
-                <br />
-                <form class="pro-form-login">
-                    <fieldset>
-                        <h1>Acme Inc - Travels</h1>
-                        <h3>Sistemas Reembolsos</h3>
-                        <div class="pt-control-group pt-vertical">
-                            <div class="pt-input-group pt-large">
-                                <span class="pt-icon pt-icon-person"></span>
-                                <input type="email" name="email" class="pt-input" placeholder="Correo electrónico" value={c.state.email()} onchange={m.withAttr('value', c.state.email)} required />
+            <div class="cont-login">
+                <div class="login">
+                    <br />
+                    <br />
+                    <form class="form-login">
+                        <fieldset>
+                            <h1>Acme Inc - Travels</h1>
+                            <h3>Sistema de reembolsos</h3>
+                            <div class="pt-control-group pt-vertical">
+                                <div class="pt-input-group pt-large">
+                                    <span class="pt-icon pt-icon-person"></span>
+                                    <input type="email" name="email" class="pt-input" placeholder="Correo electrónico" value={c.state.email()} onchange={m.withAttr('value', c.state.email)} required />
+                                </div>
+                                <div class="pt-input-group pt-large">
+                                    <span class="pt-icon pt-icon-lock"></span>
+                                    <input type="password" name="password" class="pt-input" placeholder="Contraseña" value={c.state.password()} onchange={m.withAttr('value', c.state.password)} required />
+                                </div>
+                                <Button large onclick={c.login.bind(c)} >Iniciar sesión</Button>
                             </div>
-                            <div class="pt-input-group pt-large">
-                                <span class="pt-icon pt-icon-lock"></span>
-                                <input type="password" name="password" class="pt-input" placeholder="Contraseña" value={c.state.password()} onchange={m.withAttr('value', c.state.password)} required />
-                            </div>
-                            <Button large >Iniciar sesión</Button>
-                        </div>
-                    </fieldset>
-                </form>
+                        </fieldset>
+                        <br/>
+                        <h3><i>By Stivenson Rincón</i></h3>
+                    </form>
+                </div>
             </div>
         );
     }

@@ -3,7 +3,6 @@ import {Config} from '../config';
 
 const API = {
     config(xhr) {
-        xhr.setRequestHeader('X-Requested-With', Config.ID);
         xhr.setRequestHeader('Content-Type', 'application/json');
     },
     configAuth(xhr, token) {
@@ -14,37 +13,17 @@ const API = {
         if (token) {
             API.configAuth(xhr, token);
         }
-
         API.config(xhr);
     },
-    requestUrl(endpoint,version = '') {
+    requestUrl(endpoint) {
         var path = Config.API_URL;
-        if(version == '1'){
-            path = Config.OLD_API_URL;
-        }
         path += '/';
         path += endpoint;
-
-        var venue = API.currentVenue();
-
-        if (venue !== false) {
-            path = path.replace(':vid:', venue);
-        }
-
         return path;
-    },
-    currentVenue() {
-        return window.localStorage.getItem('vid');
-    },
-    setActiveVenue(id){
-        window.localStorage.setItem('vid', id);
-        console.log('change venue');
-        location.reload();
     },
     deleteLocalStorage(){
         console.log('logout');
         window.localStorage.setItem('token',null);
-        window.localStorage.setItem('vid',null);
         localStorage.clear();
         location.reload();
     },
@@ -54,10 +33,10 @@ const API = {
         var defaults = {
             method: 'GET',
             url: API.requestUrl(endpoint),
-            config: (x) => {
+            /*config: (x) => {
                 API.requestConfig(x);
                 xhr = x;
-            },
+            },*/
             background: true
         };
 

@@ -1,156 +1,25 @@
-section.dashboard{
+.dashboard{
 
-    & .custom-padding-all-content{
-        margin-left:-20px;
+    min-height: 1000px;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    & h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
     }
 
-    & .custom-margin-header-small{
-        margin-top: 20px; 
-    }
-
-    & .custom-margin-container-small-screen{
-        /* For responsive css */
-    }
-
-    & .custom-border{
-        border-bottom: thick 1px #d3245f;
-    }
-
-    & .right-center-block {
-        text-align: right;
-    }   
-
-    & .left-center-block {
-        text-align: left;
-    }   
-
-    & .custom-padding {
-        padding-left: 10px;
-    }
-
-    & .custom-display {
-        /* For responsive css */
-    }
-
-    & .col-md-3{
-        padding-left: 1px;
-    }
-
-    & .col-sm-3{
-        padding-left: 1px;  
-    }
-
-    & .col-sm-9{
-        padding: 8px;
-        padding-right: 3px;
-        height: 50px;
-    }
-
-    & .col-md-9{
-        padding: 8px;
-        padding-right: 3px;
-        height: 50px;
-    }
-
-    & .icon-nodata{
-        font-size:20px;
-        padding:10px;
-    }
-
-    & .custom-display-amoun{
-        display:inline-block;
-        margin-left: 1em;
-    }
-
-    & .panel-body{
-        padding: 4px;
-    }
-
-    & .custom-height-panel-info{
-        height: 222px;
-    }
-
-    & .fill-height {
-        height: 100%;
-    }
-
-    & .menu-small-screen {
-        display: none;
-    }
-
-    & .custom-color-iten-small-screen{
-        /* For responsive css */
-    }
-
-    & .menu-big-screen {
-        display: block;
+    & h3 {
+        font-size: 16px;
+        font-weight: 500;
+        color: #8A9BA8;
+        margin-bottom: 30px;
     }
 
 
-    @media (max-width: 772px){
-        & header{
-            height: 120px;
-            padding-top: 10px;
-            & .appointment{
-                float: none;
-            }
-            & .highlight{
-                float: none;
-            }
-        }
 
-        & .fill-height {
-            height: auto;
-        }
-
-        & .menu-big-screen {
-            display: none;
-        }
-
-        & .custom-margin-container-small-screen{
-            margin-top: 17px;
-        }
-
-        & .custom-color-iten-small-screen{
-            background-color: #FFFFFF;
-            color: #000000;
-            border-style: solid;
-            border-color: #d3245f;
-            border-width: 1px;
-        }
-
-        & .menu-small-screen {
-            display: inline;
-        }
-
-        & .custom-padding{
-            padding-top: 25px;
-            padding-left: 0px;
-        }
-
-        & .custom-display{
-            display: block;
-        }
-
-
-        & .right-center-block {
-            display: table;
-            margin: 0 auto;
-        }   
-
-        & .left-center-block {
-            display: table;
-            margin: 0 auto;
-        }   
-
-        & .custom-display-amoun{
-            display: block;
-        }
-
-        & .setup-view {
-            padding-left:30px;
-        }
-
+    tbody tr:nth-child(odd) {
+        background-color: #ccc;
     }
 
 
