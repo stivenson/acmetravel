@@ -12,7 +12,7 @@ A continuación descripción de las tecnologías y procesos para el desarrollo d
 * Inicialización de la base de datos
     * Correr el comando `rake db:migrate` para crear las tablas 
     * Correr el comando `rake db:seed` para crear unos registros iniciales para poder ingresar al sistema  
-* How to run the test suite
+* Para desarrollo
     * Correr el comando `rails server` y un servidor quedará escuchando por el puerto 3000
 
 
