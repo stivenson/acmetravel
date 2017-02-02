@@ -3,6 +3,7 @@
 Este es un esqueleto, gestionado por [Brunch](http://brunch.io).
 
 ## Pasos iniciales
+(Preparar la API primero, gua en la parte de abajo)
 
 * Instalación (Si no lo tiene instalado):
     * Descargar el repositorio y ubicarse en el folder acmetravel-client
@@ -12,6 +13,7 @@ Este es un esqueleto, gestionado por [Brunch](http://brunch.io).
 * Para correr:
     * `brunch watch --server` — Observa el proyecto con la reconstrucción continua.
     * `brunch build --production` — Construye proyecto minificado para producción.
+    * Despues de elejir alguna de las dos opcione anteriores la aplicación se puede apreciar en las urls [Login](http://localhost:3333/) y [Dashboard](http://localhost:3333/#/dashboard) Temporalmente no están sujetas a JWT, ni roles para facilitar visuaización.
 * Sobres las carpetas:
     * `public/`este directorio es totalmente auto-generado y servido por el servidor HTTP.  Se escribe el código en el directorio `app/`.
     * Acá van los archivos estaticos `app/assets/` que finalmente quedan en `public/`.
@@ -33,6 +35,5 @@ A continuación descripción de las tecnologías y procesos para el desarrollo d
 * Inicialización de la base de datos
     * Correr el comando `rake db:migrate` para crear las tablas 
 * How to run the test suite
-
-    * Correr el comando `rails server`
+    * Correr el comando `rails server` y un servidor quedará escuchando por el puerto 3000
 * ...
