@@ -1,5 +1,5 @@
 # Cliente  (Aplicación SPA en mithril.js con sintaxis JSX usando ES6)
-
+(Folder acmetravel-client)
 Este es un modelo esquelo, gestionado por [Brunch](http://brunch.io).
 
 ## Pasos iniciales
@@ -9,8 +9,8 @@ Este es un modelo esquelo, gestionado por [Brunch](http://brunch.io).
     * [Brunch](http://brunch.io): `npm install -g brunch`
     * plugins de brunch y dependencias de la app: `npm install`
 * Run:
-    * `brunch watch --server` — watches the project with continuous rebuild. This will also launch HTTP server with [pushState](https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history).
-    * `brunch build --production` — builds minified project for production
+    * `brunch watch --server` — Observa el proyecto con la reconstrucción continua.
+    * `brunch build --production` — Construye proyecto minificado para producción.
 * Learn:
     * `public/` dir is fully auto-generated and served by HTTP server.  Write your code in `app/` dir.
     * Place static files you want to be copied from `app/assets/` to `public/`.
