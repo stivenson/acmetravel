@@ -13,7 +13,7 @@ Este es un esqueleto, gestionado por [Brunch](http://brunch.io).
 * Para correr:
     * `brunch watch --server` — Observa el proyecto con la reconstrucción continua.
     * `brunch build --production` — Construye proyecto minificado para producción.
-    * Despues de elejir alguna de las dos opcione anteriores la aplicación se puede apreciar en las urls [Login](http://localhost:3333/) y [Dashboard](http://localhost:3333/#/dashboard) Temporalmente no están sujetas a JWT, ni roles para facilitar visuaización.
+    * Despues de elejir alguna de las dos opcione anteriores la aplicación se puede apreciar en las urls [Login](http://localhost:3333/) (http://localhost:3333/) y [Dashboard](http://localhost:3333/#/dashboard) (http://localhost:3333/#/dashboard) Temporalmente no están sujetas a JWT, ni roles para facilitar visualización.
 * Sobres las carpetas:
     * `public/`este directorio es totalmente auto-generado y servido por el servidor HTTP.  Se escribe el código en el directorio `app/`.
     * Acá van los archivos estaticos `app/assets/` que finalmente quedan en `public/`.
@@ -30,7 +30,7 @@ A continuación descripción de las tecnologías y procesos para el desarrollo d
     * [Mysql](https://www.mysql.com/)
 * Instalación
     * Descargar el repositorio y ubicarse en el folder acmetravel
-* Creacin de la base de datos
+* Creación de la base de datos
     * Crear la base de datos llamada `acmetravel` en mysql
 * Inicialización de la base de datos
     * Correr el comando `rake db:migrate` para crear las tablas 
