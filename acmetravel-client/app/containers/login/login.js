@@ -35,7 +35,7 @@ const Login = {
                             </div>
                         </fieldset>
                         <br/>
-                        <h3><i>By Stivenson Rincón<br/>Testeado en <b>Google Chrome (Versión Actualizada)</b></i></h3>
+                        <h3><i>By Stivenson Rincón<br/> <br/> Testeado en <b>Google Chrome <br/><br/>(Versión Actualizada)</b></i></h3>
 
                     </form>
                 </div>
