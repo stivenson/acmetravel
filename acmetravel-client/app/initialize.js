@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('idEmployee',false);
     localStorage.setItem('idTravel',false);
     localStorage.setItem('idExpense',false);
+    localStorage.setItem('user',false);
     const WrapMainLayout = (children) => {
         return {
             view() {

@@ -7,6 +7,7 @@ import ReportsEmployeeTotals from '../../components/reports/employee-totals';
 const Dashboard = {
     vm(){
         return {
+            currentRol: m.prop(JSON.parse(localStorage.getItem('user')).role_id),
             employees: m.prop('empty'),
             travels: m.prop('empty'),
             expenses: m.prop('empty'),
@@ -26,6 +27,9 @@ const Dashboard = {
             fetchTags: () => {
                 return API.get('tags');
             },
+            fetchEmployee: (id) => {
+                return API.get(`users/show/${id}`);
+            },
             toEmployee: () => {m.route('/dashboard/employee')},
             toTravel: (idEmployee) => {m.route(`/dashboard/travel?id=${idEmployee}`)},
             toExpense: (idTravel) => {m.route(`/dashboard/expense?id=${idTravel}`)},
@@ -36,6 +40,11 @@ const Dashboard = {
         }
     },
     controller(){
+
+        if(localStorage.getItem('user') == false || localStorage.getItem('user') == null){
+            m.route("/");
+        }
+
         this.vm = Dashboard.vm();
         this.vm.fetchEmployees().then(this.vm.employees).then(()=>m.redraw()); 
 
@@ -75,6 +84,14 @@ const Dashboard = {
             }
             return total;   
         } 
+
+        if(this.vm.currentRol() == 2){
+            let user = JSON.parse(localStorage.getItem('user'));
+            if(user == null){
+                m.route("/");
+            }
+            this.loadTravels(user.id);
+        }
 
     },
     view(c){
@@ -323,67 +340,122 @@ const Dashboard = {
             )  
         }
 
-        return (
-        	<div class="dashboard">
-                {title_employee}
-        	    <div class="row">
-                    <div class="col-md-3">
-                        <div class="text-center"><h3>Empleados</h3></div>
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <Button fill large type="button" onclick={c.vm.toEmployee.bind(c.vm)}><span class="pt-icon-standard pt-icon-add"></span> Nuevo empleado</Button>
-                                <br/>
-                                <br/>
-                                {employees}
-                            </div>
+        let contentAdminPanels1, contentAdminPanels2;
+
+        if(c.vm.currentRol() == 1){
+            contentAdminPanels1 = (
+
+                <div class="col-md-6">
+                    <div class="text-center"><h3>Empleados</h3></div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <Button fill large type="button" onclick={c.vm.toEmployee.bind(c.vm)}><span class="pt-icon-standard pt-icon-add"></span> Nuevo empleado</Button>
+                            <br/>
+                            <br/>
+                            {employees}
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="text-center"><h3> <span class="pt-icon-standard pt-icon-airplane"></span> Viajes de Empleado</h3></div>
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <span class={c.vm.currentEmployee() == false ? ' hidden ':' '} ><Button fill large type="button" onclick={c.vm.toTravel.bind(c.vm,c.vm.currentEmployee())} ><span class="pt-icon-standard pt-icon-add"></span> Nuevo viaje</Button></span>
-                                <br/>
-                                <br/>
-                                {travels}
-                            </div>
+                </div>
+            )
+
+            contentAdminPanels2 = (
+                <div class="col-md-6">
+                    <div class="text-center"><h3> <span class="pt-icon-standard pt-icon-airplane"></span> Viajes de Empleado</h3></div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <span class={c.vm.currentEmployee() == false ? ' hidden ':' '} ><Button fill large type="button" onclick={c.vm.toTravel.bind(c.vm,c.vm.currentEmployee())} ><span class="pt-icon-standard pt-icon-add"></span> Nuevo viaje</Button></span>
+                            <br/>
+                            <br/>
+                            {travels}
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="text-center"><h3> <span class="pt-icon-standard pt-icon-dollar"></span> Gastos de Viaje</h3></div>
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <span class={c.vm.currentTravel() == false ? ' hidden ':' '} ><Button fill large type="button" onclick={c.vm.toExpense.bind(c.vm,c.vm.currentTravel())} ><span class="pt-icon-standard pt-icon-add"></span> Nuevo Gasto</Button></span>
-                                <br/>
-                                <br/>
-                                {expenses}
-                            </div>
+                </div>
+            )
+        } 
+
+        let contentEmployeePanels0, contentEmployeePanels1, contentEmployeePanels2;
+
+        if(c.vm.currentRol() == 2){
+
+
+
+            contentEmployeePanels0 = (
+
+                <div class="col-md-4">
+                    <div class="text-center"><h3> <span class="pt-icon-standard pt-icon-airplane"></span> Viajes de Empleado</h3></div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <span class={c.vm.currentEmployee() == false ? ' hidden ':' '} ><Button fill large type="button" onclick={c.vm.toTravel.bind(c.vm,c.vm.currentEmployee())} ><span class="pt-icon-standard pt-icon-add"></span> Nuevo viaje</Button></span>
+                            <br/>
+                            <br/>
+                            {travels}
                         </div>
                     </div>
+                </div>
+            )
+            
+            contentEmployeePanels1 = (
 
-
-                    <div class="col-md-3">
-                        <div class="text-center"><h3> <span class="pt-icon-standard pt-icon-tag"></span> Etiquetas de gasto</h3></div>
-
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <span class={c.vm.currentExpense() == false ? ' hidden ':' '} ><Button fill large type="button" onclick={c.vm.toTagsExpense.bind(c.vm,c.vm.currentExpense())} ><span class="pt-icon-standard pt-icon-add"></span> Nueva Etiqueta</Button></span>
-                                <br/>
-                                <br/>
-                                {tagsexpenses}
-                            </div>
+                <div class="col-md-4">
+                    <div class="text-center"><h3> <span class="pt-icon-standard pt-icon-dollar"></span> Gastos de Viaje</h3></div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <span class={c.vm.currentTravel() == false ? ' hidden ':' '} ><Button fill large type="button" onclick={c.vm.toExpense.bind(c.vm,c.vm.currentTravel())} ><span class="pt-icon-standard pt-icon-add"></span> Nuevo Gasto</Button></span>
+                            <br/>
+                            <br/>
+                            {expenses}
                         </div>
                     </div>
-               </div>
+                </div>
 
-               <div class="row">
-                    <div class="col-md-4">
+            )
+
+
+            contentEmployeePanels2 = ( 
+                <div class="col-md-4">
+                    <div class="text-center"><h3> <span class="pt-icon-standard pt-icon-tag"></span> Etiquetas de gasto</h3></div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <span class={c.vm.currentExpense() == false ? ' hidden ':' '} ><Button fill large type="button" onclick={c.vm.toTagsExpense.bind(c.vm,c.vm.currentExpense())} ><span class="pt-icon-standard pt-icon-add"></span> Nueva Etiqueta</Button></span>
+                            <br/>
+                            <br/>
+                            {tagsexpenses}
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
+
+        let reportsAdminPanels;
+
+        if(c.vm.currentRol() == 1){
+           reportsAdminPanels = (
+                <div class="row">
+                    <div class="col-md-6">
                         <ReportsCategories />
                     </div>
                     <div class="col-md-6">
                         <ReportsEmployeeTotals />
                     </div>
                </div>
+           )
+        }
+
+
+
+        return (
+        	<div class="dashboard">
+                {title_employee}
+        	    <div class="row">
+                    {contentAdminPanels1}
+                    {contentAdminPanels2}
+                    {contentEmployeePanels0}
+                    {contentEmployeePanels1}
+                    {contentEmployeePanels2}
+               </div>
+               {reportsAdminPanels}
         	</div>
         )
     }

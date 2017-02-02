@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     get "tagsexpenses/expenses/:idexpense", to: "tagsexpenses#indexOfExpense"
     get "reports/tagsexpenses/importantTags", to: "tagsexpenses#importantTags"
     get "reports/users/expensesAll", to: "users#expensesAll"
+    post "login", to: "users#showWithCredentials"
 
 end
