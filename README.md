@@ -5,7 +5,7 @@ Este es un esqueleto, gestionado por [Brunch](http://brunch.io).
 ## Pasos iniciales
 (Preparar la API primero, guía en la parte de abajo)
 
-* Instalación (Si no lo tiene instalado):
+* Instalación:
     * Descargar el repositorio y ubicarse en el folder acmetravel-client
     * [Node.js](http://nodejs.org): `brew install node` en OS X
     * [Brunch](http://brunch.io): `npm install -g brunch`
