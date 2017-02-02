@@ -1,5 +1,5 @@
 # Cliente  (Aplicación SPA en mithril.js con sintaxis JSX usando ES6)
-(Folder acmetravel-client)
+(Folder acmetravel-client) A continuación descripción de las tecnologías y procesos para el desarrollo del cliente web (opté por que la app No fuese monolítica)
 Este es un esqueleto, gestionado por [Brunch](http://brunch.io).
 
 ## Pasos iniciales
@@ -36,4 +36,3 @@ A continuación descripción de las tecnologías y procesos para el desarrollo d
     * Correr el comando `rake db:migrate` para crear las tablas 
 * How to run the test suite
     * Correr el comando `rails server` y un servidor quedará escuchando por el puerto 3000
-* ...
