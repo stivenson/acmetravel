@@ -35,6 +35,11 @@ const TagsExpenseForm = {
         this.toReturn = () => {m.route('/dashboard')}
     },
     view(c){
+        
+        if(localStorage.getItem('user') == 'false' || localStorage.getItem('user') == null){
+            m.route("/");
+        }
+
         return (
             <div class="tagsexpense-form">
                 <div class="customs-dashboard-forms">

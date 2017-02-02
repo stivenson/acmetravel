@@ -17,6 +17,11 @@ export const ReportsCategories = {
     },
     view(c){
 
+
+        if(localStorage.getItem('user') == 'false' || localStorage.getItem('user') == null){
+            m.route("/");
+        }
+        
         let tags = <Spinner />;
 
         if(c.vm.tags() != 'empty'){

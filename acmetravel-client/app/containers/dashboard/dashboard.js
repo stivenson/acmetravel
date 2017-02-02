@@ -41,7 +41,7 @@ const Dashboard = {
     },
     controller(){
 
-        if(localStorage.getItem('user') == false || localStorage.getItem('user') == null){
+        if(localStorage.getItem('user') == 'false' || localStorage.getItem('user') == null){
             m.route("/");
         }
 
@@ -95,6 +95,10 @@ const Dashboard = {
 
     },
     view(c){
+
+        if(localStorage.getItem('user') == 'false' || localStorage.getItem('user') == null){
+            m.route("/");
+        }
 
         let spin = <div class="text-center"><Spinner /></div>;
         let employees = spin;
@@ -393,7 +397,7 @@ const Dashboard = {
                     </div>
                 </div>
             )
-            
+
             contentEmployeePanels1 = (
 
                 <div class="col-md-4">

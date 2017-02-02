@@ -28,6 +28,10 @@ export const ReportsEmployeeTotals = {
     },
     view(c){
 
+        if(localStorage.getItem('user') == 'false' || localStorage.getItem('user') == null){
+            m.route("/");
+        }
+
         let totals = <Spinner />;
 
         if(c.vm.totals() != 'empty'){
