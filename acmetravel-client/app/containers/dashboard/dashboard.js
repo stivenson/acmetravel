@@ -1,6 +1,8 @@
 import m from 'mithril';
-import {Spinner} from '../../components/ui';
+import {Spinner,Button} from '../../components/ui';
 import API from '../../components/api';
+import ReportsCategories from '../../components/reports/categories';
+import ReportsEmployeeTotals from '../../components/reports/employee-totals';
 
 const Dashboard = {
     vm(){
@@ -9,7 +11,6 @@ const Dashboard = {
             travels: m.prop('empty'),
             expenses: m.prop('empty'),
             tagsexpenses: m.prop('empty'),
-            tags: m.prop('empty'),
             fetchEmployees: () => {
                 return API.get('users');
             },
@@ -24,19 +25,57 @@ const Dashboard = {
             },
             fetchTags: () => {
                 return API.get('tags');
-            }
+            },
+            toEmployee: () => {m.route('/dashboard/employee')},
+            toTravel: (idEmployee) => {m.route(`/dashboard/travel?id=${idEmployee}`)},
+            toExpense: (idTravel) => {m.route(`/dashboard/expense?id=${idTravel}`)},
+            toTagsExpense: (idExpense) => {m.route(`/dashboard/tagsexpense?id=${idExpense}`)},
+            currentEmployee: m.prop(localStorage.getItem('idEmployee')),
+            currentTravel: m.prop(localStorage.getItem('idTravel')),
+            currentExpense: m.prop(localStorage.getItem('idExpense')) 
         }
     },
     controller(){
         this.vm = Dashboard.vm();
         this.vm.fetchEmployees().then(this.vm.employees).then(()=>m.redraw()); 
-        this.vm.fetchTags().then(this.vm.tags).then(()=>m.redraw());
 
-        this.loadTravels = (idEmployee) => {this.vm.fetchTravels(idEmployee).then(this.vm.travels).then(()=>m.redraw())}; 
+        this.loadTravels = (idEmployee) => {
+            this.vm.currentEmployee(idEmployee);
+            localStorage.setItem('idEmployee',idEmployee);
+            this.vm.fetchTravels(idEmployee).then(this.vm.travels).then(()=>m.redraw())
+        }; 
 
-        this.loadExpenses = (idTravel) => {this.vm.fetchExpenses(idTravel).then(this.vm.expenses).then(()=>m.redraw())};
+        this.loadExpenses = (idTravel) => {
+            this.vm.currentTravel(idTravel);
+            localStorage.setItem('idTravel',idTravel);
+            this.vm.fetchExpenses(idTravel).then(this.vm.expenses).then(()=>m.redraw())
+        };
 
-        this.loadTagsExpense = (idExpense) => {this.vm.fetchTagsExpense(idExpense).then(this.vm.tagsexpenses).then(()=>m.redraw())}; 
+        this.loadTagsExpense = (idExpense) => {
+            this.vm.currentExpense(idExpense);
+            localStorage.setItem('idExpense',idExpense);
+            this.vm.fetchTagsExpense(idExpense).then(this.vm.tagsexpenses).then(()=>m.redraw())
+        }; 
+
+        if(this.vm.currentEmployee() != false){
+            this.loadTravels(this.vm.currentEmployee());
+        }
+        if(this.vm.currentTravel() != false){
+            this.loadExpenses(this.vm.currentTravel());
+        }
+        if(this.vm.currentExpense() != false){
+            this.loadTagsExpense(this.vm.currentExpense());
+        }
+
+        this.totalExpenses = () => {
+            let total = 0;
+            let arrEx = this.vm.expenses();
+            for(let i in arrEx){
+                total = total + arrEx[i].amount;
+            }
+            return total;   
+        } 
+
     },
     view(c){
 
@@ -126,7 +165,11 @@ const Dashboard = {
                                 return (
                                     <tr>
                                         <td>{t.description.substring(0, 12)}...</td>
-                                        <td>{t.finalized}</td>
+                                        <td>
+                                            
+                                            <span class={"pt-tag pt-intent-success "+(t.finalized?'':'hidden')}>Si</span>
+                                            <span class={"pt-tag default "+(!t.finalized?'':'hidden')}>No</span>
+                                        </td>
                                         <td>
                                             <a onclick={c.loadExpenses.bind(c,t.id)}>
                                                 <span class="pt-icon-standard pt-icon-dollar"></span>
@@ -199,6 +242,9 @@ const Dashboard = {
                             })}
                             </tbody>
                         </table>
+                        <div class="text-center">
+                        Total Gastos <big><b>$ {c.totalExpenses()}</b></big>
+                        </div>
                     </div>
                 ) 
             }
@@ -237,7 +283,7 @@ const Dashboard = {
                     <div >
                         {c.vm.tagsexpenses().map((t) => {
                             return (
-                                <span class="custom-padding"><span class="pt-tag pt-intent-primary">{t.text}</span></span>
+                                <div class="custom-padding"><span class="pt-tag pt-intent-success">{t.text}</span></div>
                             )
                         })}
                     </div>
@@ -258,19 +304,36 @@ const Dashboard = {
             )
         }
 
+        let title_employee;
 
+
+        if(c.vm.currentEmployee() != false && c.vm.employees() != 'empty'){
+            title_employee = (
+                <div class="text-center">
+                    <h1>
+                    {(() => {
+                        let employee = c.vm.employees().filter(em => em.id == c.vm.currentEmployee())
+                        if(employee.length > 0){
+                            return employee[0].names+ ' '+employee[0].surnames;
+                        }
+                    })()}
+                    </h1>
+                    <br/>
+                </div>
+            )  
+        }
 
         return (
         	<div class="dashboard">
-                <div class="text-center">
-                    <legend>Acme Inc - Travels</legend>
-                </div>
-
-        	   <div class="row">
+                {title_employee}
+        	    <div class="row">
                     <div class="col-md-3">
                         <div class="text-center"><h3>Empleados</h3></div>
                         <div class="panel panel-default">
                             <div class="panel-body">
+                                <Button fill large type="button" onclick={c.vm.toEmployee.bind(c.vm)}><span class="pt-icon-standard pt-icon-add"></span> Nuevo empleado</Button>
+                                <br/>
+                                <br/>
                                 {employees}
                             </div>
                         </div>
@@ -279,6 +342,9 @@ const Dashboard = {
                         <div class="text-center"><h3> <span class="pt-icon-standard pt-icon-airplane"></span> Viajes de Empleado</h3></div>
                         <div class="panel panel-default">
                             <div class="panel-body">
+                                <span class={c.vm.currentEmployee() == false ? ' hidden ':' '} ><Button fill large type="button" onclick={c.vm.toTravel.bind(c.vm,c.vm.currentEmployee())} ><span class="pt-icon-standard pt-icon-add"></span> Nuevo viaje</Button></span>
+                                <br/>
+                                <br/>
                                 {travels}
                             </div>
                         </div>
@@ -287,6 +353,9 @@ const Dashboard = {
                         <div class="text-center"><h3> <span class="pt-icon-standard pt-icon-dollar"></span> Gastos de Viaje</h3></div>
                         <div class="panel panel-default">
                             <div class="panel-body">
+                                <span class={c.vm.currentTravel() == false ? ' hidden ':' '} ><Button fill large type="button" onclick={c.vm.toExpense.bind(c.vm,c.vm.currentTravel())} ><span class="pt-icon-standard pt-icon-add"></span> Nuevo Gasto</Button></span>
+                                <br/>
+                                <br/>
                                 {expenses}
                             </div>
                         </div>
@@ -298,9 +367,21 @@ const Dashboard = {
 
                         <div class="panel panel-default">
                             <div class="panel-body">
+                                <span class={c.vm.currentExpense() == false ? ' hidden ':' '} ><Button fill large type="button" onclick={c.vm.toTagsExpense.bind(c.vm,c.vm.currentExpense())} ><span class="pt-icon-standard pt-icon-add"></span> Nueva Etiqueta</Button></span>
+                                <br/>
+                                <br/>
                                 {tagsexpenses}
                             </div>
                         </div>
+                    </div>
+               </div>
+
+               <div class="row">
+                    <div class="col-md-4">
+                        <ReportsCategories />
+                    </div>
+                    <div class="col-md-6">
+                        <ReportsEmployeeTotals />
                     </div>
                </div>
         	</div>

@@ -46,7 +46,6 @@ const API = {
         var defaults = {
             method: 'POST',
             url: API.requestUrl(endpoint),
-            config: API.requestConfig,
             data: payload,
             background: true
         };

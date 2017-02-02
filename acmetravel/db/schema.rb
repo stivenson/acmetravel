@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170201141122) do
+ActiveRecord::Schema.define(version: 20170202131650) do
 
   create_table "examples", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
@@ -25,28 +25,28 @@ ActiveRecord::Schema.define(version: 20170201141122) do
   create_table "expenses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.float    "amount",     limit: 24
     t.integer  "travel_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",            default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at",            default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["travel_id"], name: "index_expenses_on_travel_id", using: :btree
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
   create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
   create_table "tags_expenses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "expense_id"
     t.integer  "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["expense_id"], name: "index_tags_expenses_on_expense_id", using: :btree
     t.index ["tag_id"], name: "index_tags_expenses_on_tag_id", using: :btree
   end
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 20170201141122) do
     t.string   "description"
     t.boolean  "finalized",   default: false
     t.integer  "user_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",  default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at",  default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["user_id"], name: "index_travels_on_user_id", using: :btree
   end
 
@@ -65,8 +65,10 @@ ActiveRecord::Schema.define(version: 20170201141122) do
     t.string   "surnames"
     t.string   "cc"
     t.integer  "role_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.string   "email"
+    t.string   "password"
     t.index ["role_id"], name: "index_users_on_role_id", using: :btree
   end
 

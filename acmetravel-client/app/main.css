@@ -13,3 +13,7 @@ a {
 .cont-login {
 	text-align: center;
 }
+
+.hidden {
+	display: none;
+}

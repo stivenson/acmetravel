@@ -9,15 +9,15 @@ class TravelsController < ApplicationController
     render json: items
   end
 
-  def show
-  end
+    def create
+        @travel = Travel.new(travel_params)
+        render json: @travel.save, :status => 200
+    end
 
-  def create
-  end
+    private
 
-  def update
-  end
+        def travel_params
+            params.require(:travel).permit(:description,:finalized,:user_id)
+        end
 
-  def destroy
-  end
 end

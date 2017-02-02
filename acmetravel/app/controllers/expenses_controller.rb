@@ -7,15 +7,14 @@ class ExpensesController < ApplicationController
         render json: items
     end
 
-    def show
-    end
-
     def create
+        @expense = Expense.new(expense_params)
+        render json: @expense.save, :status => 200
     end
 
-    def update
-    end
+    private
 
-    def destroy
-    end
+        def expense_params
+            params.require(:expense).permit(:amount,:travel_id)
+        end
 end

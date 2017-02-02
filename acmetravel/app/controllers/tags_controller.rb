@@ -1,16 +1,6 @@
 class TagsController < ApplicationController
-  def index
-  end
-
-  def show
-  end
-
-  def create
-  end
-
-  def update
-  end
-
-  def destroy
-  end
+    def index
+        items = Tag.all
+        render json: items, :status => 200
+    end
 end

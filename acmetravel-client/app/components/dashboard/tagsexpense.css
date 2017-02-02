@@ -1,0 +1,9 @@
+.tagsexpense-form{
+
+	& .customs-dashboard-forms {
+		max-width: 550px;
+		padding: 15px;
+		margin: 0 auto;
+	}
+
+}

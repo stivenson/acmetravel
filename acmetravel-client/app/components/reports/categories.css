@@ -1,0 +1,8 @@
+.categories{
+
+    & .custom-padding {
+        padding: 8px;
+        display: inline-block;
+    }
+	
+}
