@@ -50,10 +50,10 @@ Este es un esqueleto, gestionado por [Brunch](http://brunch.io).
 
 
 
-
-
-
-Mejoras pendientes (Que tuvieron en cuenta)
+*
+*
+*
+Mejoras pendientes (Que se tienen en cuenta)
 Encriptar las contraseñas. 
 Autenticación con token (Al no ser monolítica).
 Validacion de permisos de roles a nivel de rutas (middlewares).
