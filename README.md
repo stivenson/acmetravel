@@ -4,46 +4,34 @@ Este es un modelo esquelo, gestionado por [Brunch](http://brunch.io).
 
 ## Pasos iniciales
 
-* Instale (Si no lo tiene instalado):
+* Instalación (Si no lo tiene instalado):
     * [Node.js](http://nodejs.org): `brew install node` en OS X
     * [Brunch](http://brunch.io): `npm install -g brunch`
     * plugins de brunch y dependencias de la app: `npm install`
-* Run:
+* Para correr:
     * `brunch watch --server` — Observa el proyecto con la reconstrucción continua.
     * `brunch build --production` — Construye proyecto minificado para producción.
-* Learn:
-    * `public/` dir is fully auto-generated and served by HTTP server.  Write your code in `app/` dir.
-    * Place static files you want to be copied from `app/assets/` to `public/`.
+* Sobres las carpetas:
+    * `public/`este directorio es totalmente auto-generado y servido por el servidor HTTP.  Se escribe el código en el directorio `app/`.
+    * Acá van los archivos estaticos `app/assets/` que finalmente quedan en `public/`.
     * [Brunch site](http://brunch.io), [Getting started guide](https://github.com/brunch/brunch-guide#readme)
 
-## ES7
-
-To use proposed JS features not included into ES6, do this:
-
-* `npm install --save-dev babel-preset-stage-0`
-* in `brunch-config.js`, add the preset: `presets: ['es2015', 'stage-0']`
 
 
 # Api 
 
 A continuación descripción de las tecnologías y procesos para el desarrollo del API
 
-Things you may want to cover:
-
 * Ruby version
-
+   5
 * System dependencies
 
 * Configuration
 
 * Database creation
-
+   
 * Database initialization
 
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
 
 * ...
