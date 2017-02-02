@@ -3,7 +3,7 @@
 Este es un esqueleto, gestionado por [Brunch](http://brunch.io).
 
 ## Pasos iniciales
-(Preparar la API primero, gua en la parte de abajo)
+(Preparar la API primero, guía en la parte de abajo)
 
 * Instalación (Si no lo tiene instalado):
     * Descargar el repositorio y ubicarse en el folder acmetravel-client
