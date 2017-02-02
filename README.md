@@ -30,10 +30,10 @@ Este es un esqueleto, gestionado por [Brunch](http://brunch.io).
     * plugins de brunch y dependencias de la app: `npm install`
 * Para correr:
     * `brunch build --production` — Construye proyecto minificado para producción.
-    * `brunch watch --server` — Observa el proyecto con la reconstrucción continua.
+    * `brunch watch --server` — Observa el proyecto con la reconstrucción continua (Desarrollo).
     * Despues correr el proyecto para desarrollo, cada vez que el código cambie, todas las tareas automatizadas, incluyendo recargar el navegador (Si es necesario) se ejecutarán, todo es para tratar e tener productividad 
 
-    La aplicación se puede apreciar en las urls [Login](http://localhost:3333/)
+    La aplicación se puede apreciar en las urls [Login](http://localhost:3333/) (http://localhost:3333/)
 
 * Sobres las carpetas:
     * `public/`este directorio es totalmente auto-generado y servido por el servidor HTTP.  Se escribe el código en el directorio `app/`.
