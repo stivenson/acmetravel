@@ -42,12 +42,15 @@ Este es un esqueleto, gestionado por [Brunch](http://brunch.io).
 
 
 
+# Vídeo de como debería lucir la navegación
 
-## Vídeo de como debería lucir la navegación
-* pendiente
+# [Youtube App Acme Vídeo](https://youtu.be/JxzTozU0K0Q)
 
 
-Mejoras pendientes (Que tuvieron en cuenta)
+
+
+
+##Mejoras pendientes (Que tuvieron en cuenta)
 
 * Encriptar las contraseñas. 
 * Autenticación con token (Al no ser monolítica).
