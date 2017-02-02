@@ -1,10 +1,11 @@
 # Cliente  (Aplicación SPA en mithril.js con sintaxis JSX usando ES6)
 (Folder acmetravel-client)
-Este es un modelo esquelo, gestionado por [Brunch](http://brunch.io).
+Este es un esqueleto, gestionado por [Brunch](http://brunch.io).
 
 ## Pasos iniciales
 
 * Instalación (Si no lo tiene instalado):
+    * Descargar el repositorio y ubicarse en el folder acmetravel-client
     * [Node.js](http://nodejs.org): `brew install node` en OS X
     * [Brunch](http://brunch.io): `npm install -g brunch`
     * plugins de brunch y dependencias de la app: `npm install`
@@ -18,20 +19,20 @@ Este es un modelo esquelo, gestionado por [Brunch](http://brunch.io).
 
 
 
-# Api 
-
+# Api (Ruby on Rails 5)
+(Folder acmetravel-client)
 A continuación descripción de las tecnologías y procesos para el desarrollo del API
 
-* Ruby version
-   5
-* System dependencies
 
-* Configuration
-
-* Database creation
-   
-* Database initialization
-
+* Requerimientos del sistema
+    * [Mysql](https://www.mysql.com/)
+* Instalación
+    * Descargar el repositorio y ubicarse en el folder acmetravel
+* Creacin de la base de datos
+    * Crear la base de datos llamada `acmetravel` en mysql
+* Inicialización de la base de datos
+    * Correr el comando `rake db:migrate` para crear las tablas 
 * How to run the test suite
 
+    * Correr el comando `rails server`
 * ...
