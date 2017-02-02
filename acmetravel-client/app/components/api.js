@@ -33,10 +33,6 @@ const API = {
         var defaults = {
             method: 'GET',
             url: API.requestUrl(endpoint),
-            /*config: (x) => {
-                API.requestConfig(x);
-                xhr = x;
-            },*/
             background: true
         };
 

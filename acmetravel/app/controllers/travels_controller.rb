@@ -4,6 +4,11 @@ class TravelsController < ApplicationController
     render json: items
   end
 
+  def indexOfEmployee
+    items = Travel.where(user_id: params[:idemployee])
+    render json: items
+  end
+
   def show
   end
 

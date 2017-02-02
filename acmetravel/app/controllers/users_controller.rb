@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-      items = User.all
+      items = User.where(:role_id => 2).all
       render json: items, :status => 200
   end
 
