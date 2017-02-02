@@ -1,53 +1,38 @@
-# Cliente 
+# Cliente  (Aplicación SPA en mithril.js con sintaxis JSX usando ES6)
+(Folder acmetravel-client) A continuación descripción de las tecnologías y procesos para el desarrollo del cliente web (opté por que la app No fuese monolítica)
+Este es un esqueleto, gestionado por [Brunch](http://brunch.io).
 
-This is a modern JS skeleton for [Brunch](http://brunch.io).
+## Pasos iniciales
+(Preparar la API primero, guía en la parte de abajo)
 
-## Installation
-
-Clone this repo manually or use `brunch new dir -s brunch/with-es6`
-
-## Getting started
-
-* Install (if you don't have them):
-    * [Node.js](http://nodejs.org): `brew install node` on OS X
+* Instalación:
+    * Descargar el repositorio y ubicarse en el folder acmetravel-client
+    * [Node.js](http://nodejs.org): `brew install node` en OS X
     * [Brunch](http://brunch.io): `npm install -g brunch`
-    * Brunch plugins and app dependencies: `npm install`
-* Run:
-    * `brunch watch --server` — watches the project with continuous rebuild. This will also launch HTTP server with [pushState](https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history).
-    * `brunch build --production` — builds minified project for production
-* Learn:
-    * `public/` dir is fully auto-generated and served by HTTP server.  Write your code in `app/` dir.
-    * Place static files you want to be copied from `app/assets/` to `public/`.
+    * plugins de brunch y dependencias de la app: `npm install`
+* Para correr:
+    * `brunch watch --server` — Observa el proyecto con la reconstrucción continua.
+    * `brunch build --production` — Construye proyecto minificado para producción.
+    * Despues de elejir alguna de las dos opcione anteriores la aplicación se puede apreciar en las urls [Login](http://localhost:3333/) (http://localhost:3333/) y [Dashboard](http://localhost:3333/#/dashboard) (http://localhost:3333/#/dashboard) Temporalmente no están sujetas a JWT, ni roles para facilitar visualización.
+* Sobres las carpetas:
+    * `public/`este directorio es totalmente auto-generado y servido por el servidor HTTP.  Se escribe el código en el directorio `app/`.
+    * Acá van los archivos estaticos `app/assets/` que finalmente quedan en `public/`.
     * [Brunch site](http://brunch.io), [Getting started guide](https://github.com/brunch/brunch-guide#readme)
 
-## ES7
-
-To use proposed JS features not included into ES6, do this:
-
-* `npm install --save-dev babel-preset-stage-0`
-* in `brunch-config.js`, add the preset: `presets: ['es2015', 'stage-0']`
 
 
-# Api 
-
+# Api (Ruby on Rails 5)
+(Folder acmetravel-client)
 A continuación descripción de las tecnologías y procesos para el desarrollo del API
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
+* Requerimientos del sistema
+    * [Mysql](https://www.mysql.com/)
+* Instalación
+    * Descargar el repositorio y ubicarse en el folder acmetravel
+* Creación de la base de datos
+    * Crear la base de datos llamada `acmetravel` en mysql
+* Inicialización de la base de datos
+    * Correr el comando `rake db:migrate` para crear las tablas 
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    * Correr el comando `rails server` y un servidor quedará escuchando por el puerto 3000
