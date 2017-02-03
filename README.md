@@ -13,6 +13,7 @@ A continuación descripción de las tecnologías y procesos para el desarrollo d
     * Correr el comando `bundle install`  para instalar las gemas (instalar bundle primero si es necesario)  
     * Correr el comando `rake db:migrate` para crear las tablas 
     * Correr el comando `rake db:seed` para crear unos registros iniciales para poder ingresar al sistema  
+    * Si tiene problemas con estos comandos, es posible que deba ajustar la ruta del socket de mysql (Que debe estar en ejecución) en el archivo /config/database.yml, a su ubicación de acuerdo al sistema que este usando.
 * Para desarrollo
     * Correr el comando `rails server` y un servidor quedará escuchando por el puerto 3000
 
