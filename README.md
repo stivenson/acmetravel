@@ -10,6 +10,7 @@ A continuación descripción de las tecnologías y procesos para el desarrollo d
 * Creación de la base de datos
     * Crear la base de datos llamada `acmetravel` en mysql
 * Inicialización de la base de datos
+    * Correr el comando `bundle install`  para instalar las gemas (instalar bundle primero si es necesario)  
     * Correr el comando `rake db:migrate` para crear las tablas 
     * Correr el comando `rake db:seed` para crear unos registros iniciales para poder ingresar al sistema  
 * Para desarrollo
