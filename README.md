@@ -1,5 +1,5 @@
 # Api (Ruby on Rails 5)
-(Folder acmetravel-client)
+(Folder acmetravel)
 A continuación descripción de las tecnologías y procesos para el desarrollo del API
 
 
